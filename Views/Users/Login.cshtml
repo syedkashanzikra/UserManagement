@@ -1,0 +1,16 @@
+﻿@model LoginwithEmail.ViewModels.LoginViewModel
+
+<form asp-action="Login" method="post">
+    <div asp-validation-summary="All">
+
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="email" asp-for="Email" required />
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="password" asp-for="Password" required />
+    </div>
+    <button type="submit">Login</button>
+</form>

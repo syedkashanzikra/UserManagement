@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2>Welcome to your Dashboard, @ViewBag.UserName!</h2>
+
+<form asp-action="Logout" asp-controller="Users" method="post">
+    @Html.AntiForgeryToken()
+    <button class="btn-primary btn-lg" type="submit">Logout</button>
+</form>

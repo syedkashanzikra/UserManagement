@@ -1,0 +1,24 @@
+﻿@model LoginwithEmail.ViewModels.UserViewModel
+
+
+
+<form asp-action="Register" method="post">
+    <div asp-validation-summary="All"></div>
+    <div>
+        <label>Name</label>
+        <input type="text" asp-for="Name" required />
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="email" asp-for="Email" required />
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="password" asp-for="Password" required />
+    </div>
+    <div>
+        <label>Phone Number</label>
+        <input type="text" asp-for="PhoneNumber" />
+    </div>
+    <button type="submit">Register</button>
+</form>
