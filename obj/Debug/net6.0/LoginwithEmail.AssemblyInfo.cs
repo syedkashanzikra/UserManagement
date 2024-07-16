@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LoginwithEmail")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20aaa031361b095e57ae56b5d53559f62c9419f5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+022ca31d4ce2cd809bd0dfe9ba2b93a8f7a3b6eb")]
 [assembly: System.Reflection.AssemblyProductAttribute("LoginwithEmail")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LoginwithEmail")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -38,12 +38,33 @@ namespace LoginwithEmail.Controllers
         }
 
 
+        //private async Task SendVerificationEmail(User user)
+        //{
+        //    var verifyUrl = Url.Action("VerifyEmail", "Users", new { id = user.Id }, protocol: HttpContext.Request.Scheme);
+        //    var message = new MailMessage
+        //    {
+        //        From = new MailAddress("labautomation7@gmail.com", "Lab Automation"),
+        //        Subject = "Complete Your Registration",
+        //        Body = $"Please verify your account by clicking <a href='{verifyUrl}'>here</a>.",
+        //        IsBodyHtml = true,
+        //    };
+        //    message.To.Add(new MailAddress(user.Email));
+
+        //    using (var smtp = new SmtpClient("smtp.gmail.com"))
+        //    {
+        //        smtp.Port = 587;
+        //        smtp.Credentials = new System.Net.NetworkCredential("labautomation7@gmail.com", "zibbgfbonagebwxd"); // Use app-specific password
+        //        smtp.EnableSsl = true;
+
+        //        await smtp.SendMailAsync(message);
+        //    }
+        //}
         private async Task SendVerificationEmail(User user)
         {
             var verifyUrl = Url.Action("VerifyEmail", "Users", new { id = user.Id }, protocol: HttpContext.Request.Scheme);
             var message = new MailMessage
             {
-                From = new MailAddress("labautomation7@gmail.com", "Lab Automation"),
+                From = new MailAddress("eshopb7@gmail.com", "Login With Email"),
                 Subject = "Complete Your Registration",
                 Body = $"Please verify your account by clicking <a href='{verifyUrl}'>here</a>.",
                 IsBodyHtml = true,
@@ -52,13 +73,35 @@ namespace LoginwithEmail.Controllers
 
             using (var smtp = new SmtpClient("smtp.gmail.com"))
             {
-                smtp.Port = 587;
-                smtp.Credentials = new System.Net.NetworkCredential("labautomation7@gmail.com", "zibbgfbonagebwxd");
+                smtp.Port = 587; // Try using port 587 with STARTTLS
+                smtp.Credentials = new System.Net.NetworkCredential("eshopb7@gmail.com", "zxutguzuqwirwzfq");
                 smtp.EnableSsl = true;
 
-                await smtp.SendMailAsync(message);
+                try
+                {
+                    await smtp.SendMailAsync(message);
+                }
+                catch (SmtpException ex)
+                {
+                    Console.WriteLine("SMTP Exception: " + ex.Message);
+                    if (ex.InnerException != null)
+                    {
+                        Console.WriteLine("Inner Exception: " + ex.InnerException.Message);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("General Exception: " + ex.Message);
+                    if (ex.InnerException != null)
+                    {
+                        Console.WriteLine("Inner Exception: " + ex.InnerException.Message);
+                    }
+                }
             }
         }
+
+
+
 
 
 
@@ -172,6 +215,7 @@ namespace LoginwithEmail.Controllers
             return RedirectToAction("Dashboard"); // Redirect to the dashboard
         }
 
+        [Route("/dashboard")]
         public IActionResult Dashboard()
         {
             // Check if the user ID is stored in the session
